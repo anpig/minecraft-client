@@ -1,5 +1,5 @@
 rcon:
-	go build cmd/shell/main.go -o rcon
+	go build -o rcon cmd/shell/main.go
 install: rcon
 	sudo mv rcon /usr/bin/
 clean:
