@@ -57,6 +57,6 @@ func main() {
 		if err != nil {
 			log.Fatal("failed to send command:", err)
 		}
-		fmt.Println(mcfmt.Format(strings.TrimRight(resp.Body)))
+		fmt.Println(mcfmt.Format(strings.TrimRight(resp.Body, "\n")))
 	}
 }
