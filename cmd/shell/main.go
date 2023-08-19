@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/willroberts/minecraft-client"
+	"github.com/anpig/mcfmt"
 )
 
 var (
@@ -56,6 +57,6 @@ func main() {
 		if err != nil {
 			log.Fatal("failed to send command:", err)
 		}
-		fmt.Println(resp.Body)
+		fmt.Println(mcfmt.Format(strings.TrimRight(resp.Body)))
 	}
 }
