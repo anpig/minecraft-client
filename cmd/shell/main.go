@@ -8,8 +8,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/willroberts/minecraft-client"
 	"github.com/anpig/mcfmt"
+	"github.com/c-bata/go-prompt"
+	"github.com/willroberts/minecraft-client"
 )
 
 var (
@@ -28,7 +29,13 @@ func init() {
 	flag.Parse()
 }
 
+func completer(d prompt.Document) []prompt.Suggest {
+	s := []prompt.Suggest{}
+	return prompt.FilterHasPrefix(s, d.GetWordBeforeCursor(), true)
+}
+
 func main() {
+	p := prompt.Input("> ", completer)
 	client, err := minecraft.NewClient(minecraft.ClientOptions{Hostport: hostport})
 	if err != nil {
 		log.Fatal("failed to connect:", err)
@@ -42,7 +49,7 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("Starting RCON shell. Use 'exit', 'quit', or Ctrl-C to exit.")
 	for {
-		fmt.Print("> ")
+		fmt.Print(p)
 		input, err := reader.ReadString('\n')
 		if err != nil {
 			log.Fatal("failed to read input:", err)
