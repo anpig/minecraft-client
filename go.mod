@@ -5,6 +5,7 @@ go 1.19
 require github.com/stretchr/testify v1.7.0
 
 require (
+	github.com/anpig/mcfmt v0.0.0-20230819130242-70cf97a04b83 // indirect
 	github.com/c-bata/go-prompt v0.2.6 // indirect
 	github.com/davecgh/go-spew v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.7 // indirect
